@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Home, FileText, Briefcase, Wrench, Link2 } from "lucide-react";
 
 const navItems = [
-    { id: "home", label: "Home" },
-    { id: "summary", label: "Summary" },
-    { id: "experience", label: "Experience" },
-    { id: "skills", label: "Skills" },
-    { id: "links", label: "Links" },
+    { id: "home", label: "Home", icon: Home },
+    { id: "summary", label: "Summary", icon: FileText },
+    { id: "experience", label: "Experience", icon: Briefcase },
+    { id: "skills", label: "Skills", icon: Wrench },
+    { id: "links", label: "Links", icon: Link2 },
 ];
 
 export default function FloatingNav() {
@@ -46,28 +47,27 @@ export default function FloatingNav() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
         >
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 shadow-2xl">
-                <ul className="flex items-center gap-6">
-                    {navItems.map((item) => (
-                        <li key={item.id}>
-                            <button
-                                onClick={() => scrollToSection(item.id)}
-                                className={`relative px-4 py-2 text-sm font-medium transition-colors ${activeSection === item.id
-                                        ? "text-accent"
-                                        : "text-muted hover:text-foreground"
-                                    }`}
-                            >
-                                {item.label}
-                                {activeSection === item.id && (
-                                    <motion.div
-                                        layoutId="activeSection"
-                                        className="absolute inset-0 bg-accent/10 rounded-full -z-10"
-                                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                                    />
-                                )}
-                            </button>
-                        </li>
-                    ))}
+            <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-3 py-3 shadow-2xl">
+                <ul className="flex items-center gap-2">
+                    {navItems.map((item) => {
+                        const Icon = item.icon;
+                        const isActive = activeSection === item.id;
+
+                        return (
+                            <li key={item.id}>
+                                <button
+                                    onClick={() => scrollToSection(item.id)}
+                                    className={`relative flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-full transition-all ${isActive
+                                            ? "bg-white text-black"
+                                            : "bg-white/10 text-white hover:bg-white/20"
+                                        }`}
+                                >
+                                    <Icon size={16} />
+                                    <span>{item.label}</span>
+                                </button>
+                            </li>
+                        );
+                    })}
                 </ul>
             </div>
         </motion.nav>

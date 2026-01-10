@@ -1,116 +1,143 @@
 import { motion } from "framer-motion";
 
+import angularIcon from '../assets/icons/angular.svg'
+import vueIcon from '../assets/icons/vuejs.svg'
+import reactIcon from '../assets/icons/react.svg'
+import rxjsIcon from '../assets/icons/rxjs.svg'
+import tailwindIcon from '../assets/icons/tailwindcss.svg'
+import jsIcon from '../assets/icons/javascript.svg'
+import tsIcon from '../assets/icons/typescript.svg'
+import capacitorIcon from '../assets/icons/capacitor.svg'
+import jestIcon from '../assets/icons/jest.svg'
+import cypressIcon from '../assets/icons/cypress.svg'
+import jasmineIcon from '../assets/icons/jasmine.svg'
+import viteIcon from '../assets/icons/vite.svg'
+import yarnIcon from '../assets/icons/yarn.svg'
+import webpackIcon from '../assets/icons/webpack.svg'
+import npmIcon from '../assets/icons/npm.svg'
+import graphqlIcon from '../assets/icons/graphql.svg'
+import nodeIcon from '../assets/icons/nodejs.svg'
+import pythonIcon from '../assets/icons/python.svg'
+import djangoIcon from '../assets/icons/django.svg'
+import javaIcon from '../assets/icons/java.svg'
+import springIcon from '../assets/icons/spring.svg'
+import dockerIcon from '../assets/icons/docker.svg'
+import gitIcon from '../assets/icons/git.svg'
+import k8sIcon from '../assets/icons/kubernetes.svg'
+import firebaseIcon from '../assets/icons/firebase.svg'
+import postgresIcon from '../assets/icons/postgresql.svg'
+
 const skills = [
   // Frontend
   {
-    name: "Angular",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg",
+    name: 'Angular',
+    icon: angularIcon,
   },
   {
-    name: "Vue.js",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
+    name: 'Vue.js',
+    icon: vueIcon,
   },
   {
-    name: "React",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    name: 'React',
+    icon: reactIcon,
   },
   {
-    name: "RxJS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rxjs/rxjs-original.svg",
+    name: 'RxJS',
+    icon: rxjsIcon,
   },
   {
-    name: "Tailwind CSS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    name: 'Tailwind CSS',
+    icon: tailwindIcon,
   },
   {
-    name: "Javascript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+    name: 'Javascript',
+    icon: jsIcon,
   },
   {
-    name: "Typescript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    name: 'Typescript',
+    icon: tsIcon,
   },
   {
-    name: "CapacitorJS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/capacitor/capacitor-original.svg",
+    name: 'CapacitorJS',
+    icon: capacitorIcon,
   },
   // Testing
   {
-    name: "Jest",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg",
+    name: 'Jest',
+    icon: jestIcon,
   },
   {
-    name: "Cypress",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cypressio/cypressio-plain.svg",
+    name: 'Cypress',
+    icon: cypressIcon,
   },
   {
-    name: "Jasmine",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jasmine/jasmine-original.svg",
+    name: 'Jasmine',
+    icon: jasmineIcon,
   },
   // Build Tools & Package Managers
   {
-    name: "Vite",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg",
+    name: 'Vite',
+    icon: viteIcon,
   },
   {
-    name: "Yarn",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yarn/yarn-original.svg",
+    name: 'Yarn',
+    icon: yarnIcon,
   },
   {
-    name: "Webpack",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg",
+    name: 'Webpack',
+    icon: webpackIcon,
   },
   {
-    name: "npm",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg",
+    name: 'npm',
+    icon: npmIcon,
   },
   // Backend & APIs
   {
-    name: "GraphQL",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg",
+    name: 'GraphQL',
+    icon: graphqlIcon,
   },
   {
-    name: "Node.js",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+    name: 'Node.js',
+    icon: nodeIcon,
   },
   {
-    name: "Python",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+    name: 'Python',
+    icon: pythonIcon,
   },
   {
-    name: "Django",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg",
+    name: 'Django',
+    icon: djangoIcon,
   },
   {
-    name: "Java",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
+    name: 'Java',
+    icon: javaIcon,
   },
   {
-    name: "Spring",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg",
+    name: 'Spring',
+    icon: springIcon,
   },
   // DevOps & Tools
   {
-    name: "Docker",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
+    name: 'Docker',
+    icon: dockerIcon,
   },
   {
-    name: "Git",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    name: 'Git',
+    icon: gitIcon,
   },
   {
-    name: "Kubernetes",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg",
+    name: 'Kubernetes',
+    icon: k8sIcon,
   },
   {
-    name: "Firebase",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg",
+    name: 'Firebase',
+    icon: firebaseIcon,
   },
   {
-    name: "PostgreSQL",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+    name: 'PostgreSQL',
+    icon: postgresIcon,
   },
-];
+]
 
 const containerVariants = {
   hidden: { opacity: 0 },

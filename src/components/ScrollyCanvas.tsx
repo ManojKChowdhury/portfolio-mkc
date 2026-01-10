@@ -34,11 +34,7 @@ export default function ScrollyCanvas() {
     for (let i = 0; i < TOTAL_FRAMES; i++) {
       const img = new Image()
       const frameNum = i.toString().padStart(2, '0')
-      // Try both delay patterns
-      img.src = `/sequence/frame_${frameNum}_delay-0.067s.webp`
-      img.onerror = () => {
-        img.src = `/sequence/frame_${frameNum}_delay-0.066s.webp`
-      }
+      img.src = `/sequence/frame_${frameNum}.webp`
       img.onload = onImageLoad
       loadedImages[i] = img
     }

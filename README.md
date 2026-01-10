@@ -1,4 +1,4 @@
-# Portfolio MKC
+# Manoj's Portfolio
 
 A modern, interactive portfolio website featuring scroll-driven animations and canvas-based image sequences.
 

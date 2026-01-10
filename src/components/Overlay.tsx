@@ -1,23 +1,35 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Overlay() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end end'],
-  })
+    offset: ["start start", "end end"],
+  });
 
   // Map scroll progress to different opacity values for each section
-  const section1Opacity = useTransform(scrollYProgress, [0, 0.2, 0.3], [1, 0.5, 0])
-  const section2Opacity = useTransform(scrollYProgress, [0.25, 0.35, 0.5, 0.6], [0, 1, 1, 0])
-  const section3Opacity = useTransform(scrollYProgress, [0.55, 0.65, 0.85, 1], [0, 1, 1, 0])
+  const section1Opacity = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.3],
+    [1, 0.5, 0]
+  );
+  const section2Opacity = useTransform(
+    scrollYProgress,
+    [0.25, 0.35, 0.5, 0.6],
+    [0, 1, 1, 0]
+  );
+  const section3Opacity = useTransform(
+    scrollYProgress,
+    [0.55, 0.65, 0.85, 1],
+    [0, 1, 1, 0]
+  );
 
   // Parallax transforms
-  const section1Y = useTransform(scrollYProgress, [0, 0.3], [0, -50])
-  const section2Y = useTransform(scrollYProgress, [0.25, 0.6], [50, -50])
-  const section3Y = useTransform(scrollYProgress, [0.55, 1], [50, -100])
+  const section1Y = useTransform(scrollYProgress, [0, 0.3], [0, -50]);
+  const section2Y = useTransform(scrollYProgress, [0.25, 0.6], [50, -50]);
+  const section3Y = useTransform(scrollYProgress, [0.55, 1], [50, -100]);
 
   return (
     <div
@@ -30,11 +42,11 @@ export default function Overlay() {
         className="fixed inset-0 flex items-center justify-center"
       >
         <div className="text-center">
-          <h1 className="mb-4 text-6xl font-bold tracking-tight text-white md:text-8xl">
-            Your Name
+          <h1 className="mb-4 text-xl font-bold tracking-tight text-white md:text-8xl">
+            Manoj Kumar Chowdhury
           </h1>
           <p className="text-xl font-light text-white/80 md:text-3xl">
-            Creative Developer
+            Fullstack Developer
           </p>
         </div>
       </motion.div>
@@ -67,5 +79,5 @@ export default function Overlay() {
         </div>
       </motion.div>
     </div>
-  )
+  );
 }

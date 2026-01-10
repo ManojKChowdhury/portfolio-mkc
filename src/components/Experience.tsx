@@ -1,0 +1,154 @@
+import { motion } from 'framer-motion'
+
+const experiences = [
+  {
+    title: 'Software Development Team Lead',
+    company: 'Accenture',
+    location: 'Bengaluru, India',
+    period: 'July 2025 - Present',
+    achievements: [],
+  },
+  {
+    title: 'Developer',
+    company: 'Camelot ITLab (Acquired by Accenture)',
+    location: 'Mannheim, Germany / Bengaluru, India',
+    period: 'Sep 2021 - June 2025',
+    achievements: [
+      'Migrated legacy SAP UI5 application, improving development speed and maintainability',
+      'Built and maintained multiple Angular components, reducing UI implementation time',
+      'Improved load times by 10% via lazy loading, dynamic imports, and code splitting',
+      'Built Rx-Angular-based state management, enhancing application performance and structure',
+      'Achieved 90%+ unit test coverage with Jest and Testing Library, decreasing regression bugs by 35%',
+      'Integrated REST and GraphQL APIs to deliver seamless full-stack features',
+      'Mentored juniors by briefing them about their tasks and helping them code through pair-programming sessions',
+    ],
+  },
+  {
+    title: 'Frontend Development Intern',
+    company: 'Dynamaze',
+    location: 'Cologne, Germany',
+    period: 'Nov 2020 - Jan 2021',
+    achievements: [
+      'Developed modular Vue.js components for a Nuxt application, optimizing SCSS and asynchronous rendering for performance and UX',
+      'Built Cypress-based E2E test suites',
+      'Deployed cross-platform mobile apps using Capacitor JS, enhancing accessibility',
+    ],
+  },
+  {
+    title: 'Web Development Intern',
+    company: 'Magazino',
+    location: 'Munich, Germany',
+    period: 'Mar 2020 - Sep 2020',
+    achievements: [
+      'Developed a Vue-based dashboard',
+      'Integrated WebSockets for real-time fleet monitoring',
+      'Refactored UI logic, reducing DOM rendering time by 40%',
+    ],
+  },
+  {
+    title: 'Senior Developer',
+    company: 'Barclays Global Service Center',
+    location: 'Pune, India',
+    period: 'Mar 2015 - Feb 2019',
+    achievements: [
+      'Developed scalable UI modules for Barclays iPortal',
+      'Created a reusable Angular component library',
+      'Enhanced platform accessibility and mobile responsiveness in accordance with WCAG standards',
+      'Collaborated in Agile sprints to integrate REST APIs with Spring and migrated code to Docker-based environments',
+    ],
+  },
+]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  },
+}
+
+export default function Experience() {
+  return (
+    <section className="relative z-20 min-h-screen bg-[#121212] px-6 py-20 md:px-12 lg:px-20">
+      <div className="mx-auto max-w-7xl">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-16 text-5xl font-bold text-white md:text-7xl"
+        >
+          Experience
+        </motion.h2>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="space-y-8"
+        >
+          {experiences.map((experience, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-8 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-white/10 md:p-10"
+            >
+              {/* Hover glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-pink-500/0 to-blue-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-10" />
+
+              <div className="relative z-10">
+                <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+                  <div>
+                    <h3 className="text-2xl font-semibold text-white md:text-3xl">
+                      {experience.title}
+                    </h3>
+                    <p className="mt-1 text-lg font-medium text-white/80">
+                      {experience.company}
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-1 text-right">
+                    <span className="text-sm font-medium text-white/60 md:text-base">
+                      {experience.period}
+                    </span>
+                    <span className="text-sm text-white/50 md:text-base">
+                      {experience.location}
+                    </span>
+                  </div>
+                </div>
+
+                {experience.achievements.length > 0 && (
+                  <ul className="mt-6 space-y-3">
+                    {experience.achievements.map((achievement, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-3 text-base leading-relaxed text-white/70 md:text-lg"
+                      >
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40" />
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}

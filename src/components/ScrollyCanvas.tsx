@@ -62,24 +62,28 @@ export default function ScrollyCanvas() {
       const img = images[index]
 
       if (img && img.complete) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        const rect = canvas.getBoundingClientRect()
+        const cssWidth = rect.width
+        const cssHeight = rect.height
+
+        ctx.clearRect(0, 0, cssWidth, cssHeight)
 
         // Calculate dimensions for object-fit: cover behavior
-        const canvasAspect = canvas.width / canvas.height
+        const canvasAspect = cssWidth / cssHeight
         const imgAspect = img.width / img.height
 
         let drawWidth, drawHeight, offsetX, offsetY
 
         if (imgAspect > canvasAspect) {
-          drawHeight = canvas.height
-          drawWidth = img.width * (canvas.height / img.height)
-          offsetX = (canvas.width - drawWidth) / 2
+          drawHeight = cssHeight
+          drawWidth = img.width * (cssHeight / img.height)
+          offsetX = (cssWidth - drawWidth) / 2
           offsetY = 0
         } else {
-          drawWidth = canvas.width
-          drawHeight = img.height * (canvas.width / img.width)
+          drawWidth = cssWidth
+          drawHeight = img.height * (cssWidth / img.width)
           offsetX = 0
-          offsetY = (canvas.height - drawHeight) / 2
+          offsetY = (cssHeight - drawHeight) / 2
         }
 
         ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)
@@ -110,22 +114,25 @@ export default function ScrollyCanvas() {
       const currentFrame = Math.round(frameIndex.get())
       const img = images[currentFrame]
       if (img && img.complete && ctx) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        const canvasAspect = canvas.width / canvas.height
+        const cssWidth = rect.width
+        const cssHeight = rect.height
+
+        ctx.clearRect(0, 0, cssWidth, cssHeight)
+        const canvasAspect = cssWidth / cssHeight
         const imgAspect = img.width / img.height
 
         let drawWidth, drawHeight, offsetX, offsetY
 
         if (imgAspect > canvasAspect) {
-          drawHeight = canvas.height
-          drawWidth = img.width * (canvas.height / img.height)
-          offsetX = (canvas.width - drawWidth) / 2
+          drawHeight = cssHeight
+          drawWidth = img.width * (cssHeight / img.height)
+          offsetX = (cssWidth - drawWidth) / 2
           offsetY = 0
         } else {
-          drawWidth = canvas.width
-          drawHeight = img.height * (canvas.width / img.width)
+          drawWidth = cssWidth
+          drawHeight = img.height * (cssWidth / img.width)
           offsetX = 0
-          offsetY = (canvas.height - drawHeight) / 2
+          offsetY = (cssHeight - drawHeight) / 2
         }
 
         ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)

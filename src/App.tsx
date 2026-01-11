@@ -1,12 +1,17 @@
 import ScrollyCanvas from './components/ScrollyCanvas'
 import Overlay from './components/Overlay'
+import FloatingNav from './components/FloatingNav'
 import Projects from './components/Projects'
 import Experience from './components/Experience'
 import TechnicalSkills from './components/TechnicalSkills'
+import ContactMe from './components/ContactMe'
 
 function App() {
   return (
     <div className="relative">
+      {/* Floating navigation bar */}
+      <FloatingNav />
+      
       {/* Canvas with scroll-driven image sequence */}
       <ScrollyCanvas />
       
@@ -21,6 +26,9 @@ function App() {
       
       {/* Technical Skills section */}
       <TechnicalSkills />
+      
+      {/* Contact Me section */}
+      <ContactMe />
     </div>
   )
 }

@@ -47,7 +47,7 @@ const itemVariants = {
 
 export default function Projects() {
   return (
-    <section className="relative z-20 min-h-screen bg-[#121212] px-6 py-20 md:px-12 lg:px-20">
+    <section id="projects" className="relative z-20 min-h-screen bg-[#121212] px-6 py-20 md:px-12 lg:px-20">
       <div className="mx-auto max-w-7xl">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}

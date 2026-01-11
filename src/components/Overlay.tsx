@@ -33,6 +33,7 @@ export default function Overlay() {
 
   return (
     <div
+      id="home"
       ref={containerRef}
       className="pointer-events-none fixed inset-0 z-10 h-[500vh]"
     >

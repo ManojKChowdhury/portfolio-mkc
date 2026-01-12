@@ -8,6 +8,7 @@ import tailwindIcon from '../assets/icons/tailwindcss.svg'
 import jsIcon from '../assets/icons/javascript.svg'
 import tsIcon from '../assets/icons/typescript.svg'
 import capacitorIcon from '../assets/icons/capacitor.svg'
+import storybookIcon from '../assets/icons/storybook.svg'
 import jestIcon from '../assets/icons/jest.svg'
 import cypressIcon from '../assets/icons/cypress.svg'
 import jasmineIcon from '../assets/icons/jasmine.svg'
@@ -60,6 +61,10 @@ const skills = [
   {
     name: 'CapacitorJS',
     icon: capacitorIcon,
+  },
+  {
+    name: 'Storybook',
+    icon: storybookIcon,
   },
   // Testing
   {
@@ -172,7 +177,7 @@ export default function TechnicalSkills() {
           viewport={{ once: true }}
           className="mb-16 text-center text-5xl font-bold text-white md:text-7xl"
         >
-          Technical Skills
+          Technologies I've Worked With
         </motion.h2>
 
         <motion.div

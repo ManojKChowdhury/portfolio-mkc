@@ -5,6 +5,7 @@ import Projects from './components/Projects'
 import Experience from './components/Experience'
 import TechnicalSkills from './components/TechnicalSkills'
 import ContactMe from './components/ContactMe'
+import DownloadCV from './components/DownloadCV'
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
       
       {/* Contact Me section */}
       <ContactMe />
+      
+      {/* Download CV button */}
+      <DownloadCV />
     </div>
   )
 }

@@ -2,24 +2,24 @@ import { motion } from 'framer-motion'
 
 const projects = [
   {
-    title: 'Project Alpha',
-    description: 'A cutting-edge web experience with 3D interactions and real-time data visualization.',
-    tags: ['WebGL', 'Three.js', 'React'],
+    title: 'X-Chain',
+    description: 'End-to-end supply chain management for Advanced therapy medicinal products (ATMPs) in one single solution.',
+    tags: ['Angular', 'RxJS', 'Nx', 'PrimeNG'],
   },
   {
-    title: 'Project Beta',
-    description: 'Award-winning e-commerce platform featuring AI-powered personalization.',
-    tags: ['Next.js', 'AI/ML', 'Stripe'],
+    title: 'Avatar',
+    description: 'SCM platform that combines Advanced Planning & Scheduling with an AI-powered cognitive engine.',
+    tags: ['Angular', 'RxJS', 'Nx', 'PrimeNG'],
   },
   {
-    title: 'Project Gamma',
-    description: 'Interactive storytelling platform combining video, animation, and scroll-driven narratives.',
-    tags: ['Framer Motion', 'Canvas', 'GSAP'],
+    title: 'Magazino Robot Fleet Management',
+    description: 'Interactive platform combining robot live status and fleet management.',
+    tags: ['Vue', 'Python', 'Django'],
   },
   {
-    title: 'Project Delta',
-    description: 'High-performance mobile app with seamless cross-platform capabilities.',
-    tags: ['React Native', 'TypeScript', 'Firebase'],
+    title: 'iPortal',
+    description: 'Single point of access to Barclays Corporate Banking products and services, including cash management, loans, foreign exchange and open banking.',
+    tags: ['Angular', 'Bootstrap', 'Java', 'Spring'],
   },
 ]
 
@@ -56,7 +56,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="mb-16 text-5xl font-bold text-white md:text-7xl"
         >
-          Selected Work
+          Projects
         </motion.h2>
 
         <motion.div

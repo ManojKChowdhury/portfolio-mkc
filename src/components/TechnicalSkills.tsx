@@ -168,14 +168,14 @@ const itemVariants = {
 
 export default function TechnicalSkills() {
   return (
-    <section id="technical-skills" className="relative z-20 min-h-screen bg-[#121212] px-6 py-20 md:px-12 lg:px-20">
+    <section id="technical-skills" className="relative z-20 min-h-screen bg-[#121212] px-4 py-12 sm:px-6 sm:py-16 md:px-12 md:py-20 lg:px-20">
       <div className="mx-auto max-w-7xl">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-16 text-center text-5xl font-bold text-white md:text-7xl"
+          className="mb-8 text-center text-2xl font-bold text-white sm:mb-12 sm:text-3xl md:mb-16 md:text-5xl lg:text-7xl"
         >
           Technologies I've Worked With
         </motion.h2>
@@ -185,22 +185,22 @@ export default function TechnicalSkills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-8 backdrop-blur-md md:p-12"
+          className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 p-4 backdrop-blur-md sm:rounded-3xl sm:p-6 md:p-8 lg:p-12"
         >
           {/* Subtle background glow */}
           <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl filter" />
           <div className="absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl filter" />
 
-          <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12">
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
                 whileHover={{ scale: 1.1, translateY: -5 }}
-                className="group relative flex flex-col items-center gap-3"
+                className="group relative flex flex-col items-center gap-1.5 sm:gap-2 md:gap-3"
               >
                 <div
-                  className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-4 transition-all duration-300 group-hover:border-white/30 group-hover:bg-white/10 group-hover:shadow-lg group-hover:shadow-white/5 md:h-24 md:w-24 md:p-5"
+                  className="relative flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5 p-2.5 transition-all duration-300 group-hover:border-white/30 group-hover:bg-white/10 group-hover:shadow-lg group-hover:shadow-white/5 sm:h-16 sm:w-16 sm:rounded-2xl sm:p-3 md:h-20 md:w-20 md:p-4 lg:h-24 lg:w-24 lg:p-5"
                   title={skill.name}
                 >
                   <img
@@ -209,7 +209,7 @@ export default function TechnicalSkills() {
                     className="h-full w-full object-contain drop-shadow-sm transition-all duration-300 group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
                   />
                 </div>
-                <span className="text-sm font-medium text-white/50 transition-colors duration-300 group-hover:text-white">
+                <span className="text-xs font-medium text-white/50 transition-colors duration-300 group-hover:text-white sm:text-sm">
                   {skill.name}
                 </span>
               </motion.div>

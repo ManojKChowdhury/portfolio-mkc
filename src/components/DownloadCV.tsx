@@ -24,13 +24,13 @@ export default function DownloadCV() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleDownload}
-      className="group fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full border border-white/20 bg-gradient-to-br from-white/10 to-white/5 px-6 py-3 backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-lg hover:shadow-white/10 md:bottom-8 md:right-8"
+      className="group fixed bottom-4 right-4 z-50 flex items-center gap-1.5 rounded-full border border-white/20 bg-gradient-to-br from-white/10 to-white/5 px-4 py-2 backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/15 hover:shadow-lg hover:shadow-white/10 sm:bottom-6 sm:right-6 sm:gap-2 sm:px-5 sm:py-2.5 md:bottom-8 md:right-8 md:px-6 md:py-3"
       aria-label="Download CV"
     >
-      <div className="relative h-5 w-5 overflow-hidden">
+      <div className="relative h-4 w-4 overflow-hidden sm:h-5 sm:w-5">
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute h-5 w-5 text-white"
+          className="absolute h-4 w-4 text-white sm:h-5 sm:w-5"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -49,7 +49,7 @@ export default function DownloadCV() {
           />
         </motion.svg>
       </div>
-      <span className="text-sm font-semibold text-white md:text-base">
+      <span className="text-xs font-semibold text-white sm:text-sm md:text-base">
         Download CV
       </span>
     </motion.button>

@@ -40,13 +40,13 @@ export default function Overlay() {
       {/* Section 1 - Center */}
       <motion.div
         style={{ opacity: section1Opacity, y: section1Y }}
-        className="fixed inset-0 flex items-center justify-center"
+        className="fixed inset-0 flex items-center justify-center px-4 sm:px-6"
       >
         <div className="text-center">
-          <h1 className="mb-4 text-xl font-bold tracking-tight text-white md:text-8xl">
+          <h1 className="mb-2 text-3xl font-bold tracking-tight text-white sm:mb-4 sm:text-5xl md:text-7xl lg:text-8xl">
             Manoj Kumar Chowdhury
           </h1>
-          <p className="text-xl font-light text-white/80 md:text-3xl">
+          <p className="text-base font-light text-white/80 sm:text-xl md:text-2xl lg:text-3xl">
             Fullstack Developer
           </p>
         </div>
@@ -55,10 +55,10 @@ export default function Overlay() {
       {/* Section 2 - Left Aligned */}
       <motion.div
         style={{ opacity: section2Opacity, y: section2Y }}
-        className="fixed inset-0 flex items-center"
+        className="fixed inset-0 flex items-center px-4 sm:px-6"
       >
-        <div className="ml-8 max-w-2xl md:ml-20">
-          <p className="text-4xl font-medium leading-tight text-white md:text-6xl">
+        <div className="ml-0 max-w-xs sm:ml-8 sm:max-w-md md:ml-20 md:max-w-2xl">
+          <p className="text-2xl font-medium leading-tight text-white sm:text-3xl md:text-5xl lg:text-6xl">
             I build digital
             <br />
             experiences.
@@ -69,10 +69,10 @@ export default function Overlay() {
       {/* Section 3 - Right Aligned */}
       <motion.div
         style={{ opacity: section3Opacity, y: section3Y }}
-        className="fixed inset-0 flex items-center justify-end"
+        className="fixed inset-0 flex items-center justify-end px-4 sm:px-6"
       >
-        <div className="mr-8 max-w-2xl text-right md:mr-20">
-          <p className="text-4xl font-medium leading-tight text-white md:text-6xl">
+        <div className="mr-0 max-w-xs text-right sm:mr-8 sm:max-w-md md:mr-20 md:max-w-2xl">
+          <p className="text-2xl font-medium leading-tight text-white sm:text-3xl md:text-5xl lg:text-6xl">
             Bridging design
             <br />
             and engineering.

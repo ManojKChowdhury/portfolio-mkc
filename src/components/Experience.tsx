@@ -98,14 +98,14 @@ export default function Experience() {
   }
 
   return (
-    <section id="experience" className="relative z-20 min-h-screen bg-[#121212] px-6 py-20 md:px-12 lg:px-20">
+    <section id="experience" className="relative z-20 min-h-screen bg-[#121212] px-4 py-12 sm:px-6 sm:py-16 md:px-12 md:py-20 lg:px-20">
       <div className="mx-auto max-w-7xl">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-16 text-5xl font-bold text-white md:text-7xl"
+          className="mb-8 text-3xl font-bold text-white sm:mb-12 sm:text-4xl md:mb-16 md:text-5xl lg:text-7xl"
         >
           Experience
         </motion.h2>
@@ -115,7 +115,7 @@ export default function Experience() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="space-y-8"
+          className="space-y-4 sm:space-y-6 md:space-y-8"
         >
           {experiences.map((experience, index) => {
             const isExpanded = expandedCards.has(index)
@@ -125,39 +125,39 @@ export default function Experience() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-white/10"
+                className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:shadow-white/10 sm:rounded-2xl"
               >
                 {/* Hover glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 via-pink-500/0 to-blue-500/0 opacity-0 transition-opacity duration-300 group-hover:opacity-10" />
 
-                <div className="relative z-10 p-8 md:p-10">
-                  <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-baseline md:justify-between">
+                <div className="relative z-10 p-4 sm:p-6 md:p-8 lg:p-10">
+                  <div className="mb-3 flex flex-col gap-2 sm:mb-4 md:flex-row md:items-baseline md:justify-between">
                     <div className="flex-1">
-                      <h3 className="text-2xl font-semibold text-white md:text-3xl">
+                      <h3 className="text-lg font-semibold text-white sm:text-xl md:text-2xl lg:text-3xl">
                         {experience.title}
                       </h3>
-                      <p className="mt-1 text-lg font-medium text-white/80">
+                      <p className="mt-0.5 text-sm font-medium text-white/80 sm:mt-1 sm:text-base md:text-lg">
                         {experience.company}
                       </p>
                     </div>
-                    <div className="flex items-start justify-between gap-4 md:flex-col md:items-end">
-                      <div className="flex flex-col gap-1 text-right">
-                        <span className="text-sm font-medium text-white/60 md:text-base">
+                    <div className="flex items-center justify-between gap-3 sm:gap-4 md:flex-col md:items-end">
+                      <div className="flex flex-col gap-0.5 sm:gap-1 md:text-right">
+                        <span className="text-xs font-medium text-white/60 sm:text-sm md:text-base">
                           {experience.period}
                         </span>
-                        <span className="text-sm text-white/50 md:text-base">
+                        <span className="text-xs text-white/50 sm:text-sm md:text-base">
                           {experience.location}
                         </span>
                       </div>
                       {hasAchievements && (
                         <button
                           onClick={() => toggleCard(index)}
-                          className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all duration-300 hover:border-white/30 hover:bg-white/10 md:ml-0"
+                          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all duration-300 hover:border-white/30 hover:bg-white/10 sm:h-8 sm:w-8 md:ml-0"
                           aria-label={isExpanded ? 'Collapse' : 'Expand'}
                         >
                           <motion.svg
                             xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5 text-white"
+                            className="h-4 w-4 text-white sm:h-5 sm:w-5"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -183,7 +183,7 @@ export default function Experience() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="mt-6 space-y-3 overflow-hidden"
+                        className="mt-4 space-y-2 overflow-hidden sm:mt-5 sm:space-y-3 md:mt-6"
                       >
                         {experience.achievements.map((achievement, idx) => (
                           <motion.li
@@ -191,9 +191,9 @@ export default function Experience() {
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: idx * 0.05 }}
-                            className="flex items-start gap-3 text-base leading-relaxed text-white/70 md:text-lg"
+                            className="flex items-start gap-2 text-sm leading-relaxed text-white/70 sm:gap-3 sm:text-base md:text-lg"
                           >
-                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white/40" />
+                            <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/40 sm:mt-2 sm:h-1.5 sm:w-1.5" />
                             <span>{achievement}</span>
                           </motion.li>
                         ))}

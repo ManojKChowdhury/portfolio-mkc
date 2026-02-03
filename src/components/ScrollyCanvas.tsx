@@ -3,11 +3,32 @@ import { useEffect, useRef, useState } from 'react'
 
 const TOTAL_FRAMES = 75 // frames 0-74
 
+// Get scroll height based on viewport width
+const getScrollHeight = () => {
+  if (typeof window === 'undefined') return '500vh'
+  const width = window.innerWidth
+  if (width < 640) return '350vh' // Mobile
+  if (width < 768) return '400vh' // Small tablet
+  if (width < 1024) return '450vh' // Tablet
+  return '500vh' // Desktop
+}
+
 export default function ScrollyCanvas() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [images, setImages] = useState<HTMLImageElement[]>([])
   const [imagesLoaded, setImagesLoaded] = useState(false)
+  const [scrollHeight, setScrollHeight] = useState(getScrollHeight())
+
+  // Update scroll height on resize
+  useEffect(() => {
+    const updateScrollHeight = () => {
+      setScrollHeight(getScrollHeight())
+    }
+
+    window.addEventListener('resize', updateScrollHeight)
+    return () => window.removeEventListener('resize', updateScrollHeight)
+  }, [])
 
   // Track scroll progress within the container
   const { scrollYProgress } = useScroll({
@@ -146,7 +167,7 @@ export default function ScrollyCanvas() {
   }, [images, frameIndex])
 
   return (
-    <div ref={containerRef} className="relative h-[500vh] scrolly-container">
+    <div ref={containerRef} className="relative scrolly-container" style={{ height: scrollHeight }}>
       <div className="sticky top-0 h-screen w-full">
         <canvas
           ref={canvasRef}
@@ -154,8 +175,8 @@ export default function ScrollyCanvas() {
           style={{ display: imagesLoaded ? 'block' : 'none' }}
         />
         {!imagesLoaded && (
-          <div className="flex h-full w-full items-center justify-center">
-            <div className="text-2xl font-light text-white/50">Loading experience...</div>
+          <div className="flex h-full w-full items-center justify-center px-4">
+            <div className="text-lg font-light text-white/50 sm:text-xl md:text-2xl">Loading experience...</div>
           </div>
         )}
       </div>

@@ -7,7 +7,13 @@ const experiences = [
     company: 'Accenture',
     location: 'Bengaluru, India',
     period: 'July 2025 - Present',
-    achievements: [],
+    achievements: [
+      'Co-developed Python-based APIs powering AI Agent capabilities, enabling scalable integration with enterprise systems.',
+      'Collaborated with other backend and product teams to refine API contracts and deliver high-impact features end-to-end.',
+      'Contributed to the integration and onboarding of enterprise services, including REST APIs and Model Context Protocol (MCP) servers, accelerating platform extensibility and interoperability.',
+      'Provided technical mentorship to junior developers through pair programming, code reviews, and debugging sessions, improving code quality and team productivity.',
+      'Contributed to solution design discussions, driving best practices in API development, maintainability, and scalability.',
+    ],
   },
   {
     title: 'Developer',

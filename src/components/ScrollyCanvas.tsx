@@ -1,13 +1,15 @@
 import { useScroll, useTransform } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
+import { useImagePreload } from '../hooks/useImagePreload'
 
 const TOTAL_FRAMES = 75 // frames 0-74
 
 export default function ScrollyCanvas() {
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [images, setImages] = useState<HTMLImageElement[]>([])
-  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const dimensionsRef = useRef({ width: 0, height: 0 })
+
+  const { images, imagesLoaded } = useImagePreload(TOTAL_FRAMES)
 
   // Track scroll progress within the container
   const { scrollYProgress } = useScroll({
@@ -18,90 +20,73 @@ export default function ScrollyCanvas() {
   // Map scroll progress (0-1) to frame index (0-74)
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, TOTAL_FRAMES - 1])
 
-  // Preload all images
-  useEffect(() => {
-    const loadedImages: HTMLImageElement[] = []
-    let loadedCount = 0
-
-    const onImageLoad = () => {
-      loadedCount++
-      if (loadedCount === TOTAL_FRAMES) {
-        setImages(loadedImages)
-        setImagesLoaded(true)
-      }
-    }
-
-    for (let i = 0; i < TOTAL_FRAMES; i++) {
-      const img = new Image()
-      const frameNum = i.toString().padStart(2, '0')
-      img.src = `/sequence/frame_${frameNum}.webp`
-      img.onload = onImageLoad
-      loadedImages[i] = img
-    }
-
-    return () => {
-      loadedImages.forEach((img) => {
-        img.onload = null
-        img.onerror = null
-      })
-    }
-  }, [])
-
-  // Render canvas when frame changes
-  useEffect(() => {
-    if (!imagesLoaded || !canvasRef.current) return
-
-    const unsubscribe = frameIndex.on('change', (latest) => {
+  /**
+   * Renders a specific frame to the canvas.
+   * Logic handles 'object-fit: cover' behavior.
+   */
+  const renderFrame = useCallback(
+    (index: number) => {
       const canvas = canvasRef.current
-      if (!canvas) return
+      if (!canvas || !imagesLoaded) return
+
+      const img = images[index]
+      if (!img || !img.complete) return
 
       const ctx = canvas.getContext('2d')
       if (!ctx) return
 
-      const index = Math.round(latest)
-      const img = images[index]
+      const { width, height } = dimensionsRef.current
+      if (width === 0 || height === 0) return
 
-      if (img && img.complete) {
-        const rect = canvas.getBoundingClientRect()
-        const cssWidth = rect.width
-        const cssHeight = rect.height
+      ctx.clearRect(0, 0, width, height)
 
-        ctx.clearRect(0, 0, cssWidth, cssHeight)
+      // Calculate dimensions for object-fit: cover behavior
+      const canvasAspect = width / height
+      const imgAspect = img.width / img.height
 
-        // Calculate dimensions for object-fit: cover behavior
-        const canvasAspect = cssWidth / cssHeight
-        const imgAspect = img.width / img.height
+      let drawWidth, drawHeight, offsetX, offsetY
 
-        let drawWidth, drawHeight, offsetX, offsetY
-
-        if (imgAspect > canvasAspect) {
-          drawHeight = cssHeight
-          drawWidth = img.width * (cssHeight / img.height)
-          offsetX = (cssWidth - drawWidth) / 2
-          offsetY = 0
-        } else {
-          drawWidth = cssWidth
-          drawHeight = img.height * (cssWidth / img.width)
-          offsetX = 0
-          offsetY = (cssHeight - drawHeight) / 2
-        }
-
-        ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)
+      if (imgAspect > canvasAspect) {
+        drawHeight = height
+        drawWidth = img.width * (height / img.height)
+        offsetX = (width - drawWidth) / 2
+        offsetY = 0
+      } else {
+        drawWidth = width
+        drawHeight = img.height * (width / img.width)
+        offsetX = 0
+        offsetY = (height - drawHeight) / 2
       }
+
+      ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)
+    },
+    [images, imagesLoaded]
+  )
+
+  // Render canvas when frame changes
+  useEffect(() => {
+    if (!imagesLoaded) return
+
+    const unsubscribe = frameIndex.on('change', (latest) => {
+      renderFrame(Math.round(latest))
     })
 
     return () => unsubscribe()
-  }, [frameIndex, images, imagesLoaded])
+  }, [frameIndex, imagesLoaded, renderFrame])
 
-  // Handle canvas resize
+  // Handle canvas resize and initial dimension setup
   useEffect(() => {
-    if (!canvasRef.current) return
-
     const canvas = canvasRef.current
+    if (!canvas) return
+
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
       const rect = canvas.getBoundingClientRect()
 
+      // Update cached dimensions
+      dimensionsRef.current = { width: rect.width, height: rect.height }
+
+      // Update internal buffer size for high DPI
       canvas.width = rect.width * dpr
       canvas.height = rect.height * dpr
 
@@ -110,40 +95,15 @@ export default function ScrollyCanvas() {
         ctx.scale(dpr, dpr)
       }
 
-      // Force re-render current frame
-      const currentFrame = Math.round(frameIndex.get())
-      const img = images[currentFrame]
-      if (img && img.complete && ctx) {
-        const cssWidth = rect.width
-        const cssHeight = rect.height
-
-        ctx.clearRect(0, 0, cssWidth, cssHeight)
-        const canvasAspect = cssWidth / cssHeight
-        const imgAspect = img.width / img.height
-
-        let drawWidth, drawHeight, offsetX, offsetY
-
-        if (imgAspect > canvasAspect) {
-          drawHeight = cssHeight
-          drawWidth = img.width * (cssHeight / img.height)
-          offsetX = (cssWidth - drawWidth) / 2
-          offsetY = 0
-        } else {
-          drawWidth = cssWidth
-          drawHeight = img.height * (cssWidth / img.width)
-          offsetX = 0
-          offsetY = (cssHeight - drawHeight) / 2
-        }
-
-        ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight)
-      }
+      // Re-render current frame after resize
+      renderFrame(Math.round(frameIndex.get()))
     }
 
     resize()
     window.addEventListener('resize', resize)
 
     return () => window.removeEventListener('resize', resize)
-  }, [images, frameIndex])
+  }, [frameIndex, renderFrame])
 
   return (
     <div ref={containerRef} className="relative h-[500vh] scrolly-container">

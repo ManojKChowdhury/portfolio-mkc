@@ -41,28 +41,6 @@ A modern, interactive portfolio website featuring scroll-driven animations and c
 - **Responsive Design**: Mobile-first approach with Tailwind CSS breakpoints
 - **Performance Optimized**: Image preloading, canvas rendering, and optimized animations
 
-## Project Structure
-
-```
-portfolio-mkc/
-├── src/
-│   ├── components/
-│   │   ├── ScrollyCanvas.tsx    # Canvas-based scroll animation
-│   │   ├── Overlay.tsx           # Parallax text overlays
-│   │   └── Projects.tsx          # Projects showcase grid
-│   ├── App.tsx                   # Main application component
-│   ├── main.tsx                  # Application entry point
-│   └── index.css                 # Global styles
-├── sequence/                     # WebP image sequence frames
-├── public/                       # Static assets
-├── index.html                    # HTML template
-├── vite.config.ts                # Vite configuration
-├── tailwind.config.js            # Tailwind CSS configuration
-├── postcss.config.js             # PostCSS configuration
-├── tsconfig.json                 # TypeScript configuration
-└── package.json                  # Dependencies and scripts
-```
-
 ## Getting Started
 
 ### Prerequisites

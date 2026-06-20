@@ -1,13 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-
-const navItems = [
-  { label: 'Home', id: 'home' },
-  { label: 'Projects', id: 'projects' },
-  { label: 'Experience', id: 'experience' },
-  { label: 'Technical Skills', id: 'technical-skills' },
-  { label: 'Contact Me', id: 'contact-me' },
-]
+import { navItems } from '../data/portfolioData'
 
 export default function FloatingNav() {
   const [activeSection, setActiveSection] = useState('home')

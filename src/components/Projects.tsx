@@ -1,49 +1,6 @@
 import { motion } from 'framer-motion'
-
-const projects = [
-  {
-    title: 'X-Chain',
-    description: 'End-to-end supply chain management for Advanced therapy medicinal products (ATMPs) in one single solution.',
-    tags: ['Angular', 'RxJS', 'Nx', 'PrimeNG'],
-  },
-  {
-    title: 'Avatar',
-    description: 'SCM platform that combines Advanced Planning & Scheduling with an AI-powered cognitive engine.',
-    tags: ['Angular', 'RxJS', 'Nx', 'PrimeNG'],
-  },
-  {
-    title: 'Magazino Robot Fleet Management',
-    description: 'Interactive platform combining robot live status and fleet management.',
-    tags: ['Vue', 'Python', 'Django'],
-  },
-  {
-    title: 'iPortal',
-    description: 'Single point of access to Barclays Corporate Banking products and services, including cash management, loans, foreign exchange and open banking.',
-    tags: ['Angular', 'Bootstrap', 'Java', 'Spring'],
-  },
-]
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  },
-}
+import { projects } from '../data/portfolioData'
+import { slowContainerVariants as containerVariants, itemVariants } from '../constants/animations'
 
 export default function Projects() {
   return (

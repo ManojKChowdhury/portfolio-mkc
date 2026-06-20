@@ -1,47 +1,6 @@
 import { motion } from 'framer-motion'
-import githubIcon from '../assets/icons/github.svg'
-import linkedinIcon from '../assets/icons/linkedin.svg'
-import emailIcon from '../assets/icons/email.svg'
-
-const contactLinks = [
-  {
-    label: 'Email',
-    href: 'mailto:manojc009@gmail.com',
-    icon: emailIcon,
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/manoj-kumar-chowdhury',
-    icon: linkedinIcon,
-  },
-  {
-    label: 'GitHub',
-    href: 'https://github.com/ManojKChowdhury',
-    icon: githubIcon,
-  },
-]
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  },
-}
+import { contactLinks } from '../data/portfolioData'
+import { containerVariants, itemVariants } from '../constants/animations'
 
 export default function ContactMe() {
   return (

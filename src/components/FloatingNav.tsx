@@ -71,10 +71,20 @@ export default function FloatingNav() {
       className="fixed top-4 left-0 right-0 z-50 flex justify-center"
     >
       <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-white/10 md:gap-4">
+        <motion.img
+          src="/logo.svg"
+          alt="MKC Logo"
+          className="h-8 w-8 cursor-pointer"
+          whileHover={{ rotate: 15 }}
+          onClick={() => handleNavClick('home')}
+        />
+        <div className="h-6 w-px bg-white/10" />
         {navItems.map((item) => (
           <button
             key={item.id}
             onClick={() => handleNavClick(item.id)}
+            aria-label={`Go to ${item.label} section`}
+            aria-current={activeSection === item.id ? 'page' : undefined}
             className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 md:px-5 md:text-base ${
               activeSection === item.id
                 ? 'text-white'

@@ -43,6 +43,14 @@ export default function Overlay() {
         className="fixed inset-0 flex items-center justify-center"
       >
         <div className="text-center">
+          <motion.img
+            src="/logo.svg"
+            alt="MKC Logo"
+            className="mx-auto mb-6 h-20 w-20 md:h-32 md:w-32"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          />
           <h1 className="mb-4 text-xl font-bold tracking-tight text-white md:text-8xl">
             Manoj Kumar Chowdhury
           </h1>

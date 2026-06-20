@@ -13,23 +13,25 @@ function App() {
       {/* Floating navigation bar */}
       <FloatingNav />
       
-      {/* Canvas with scroll-driven image sequence */}
-      <ScrollyCanvas />
-      
-      {/* Text overlay with parallax */}
-      <Overlay />
-      
-      {/* Projects grid below the scroll animation */}
-      <Projects />
-      
-      {/* Experience section */}
-      <Experience />
-      
-      {/* Technical Skills section */}
-      <TechnicalSkills />
-      
-      {/* Contact Me section */}
-      <ContactMe />
+      <main>
+        {/* Canvas with scroll-driven image sequence */}
+        <ScrollyCanvas />
+        
+        {/* Text overlay with parallax */}
+        <Overlay />
+        
+        {/* Projects grid below the scroll animation */}
+        <Projects />
+        
+        {/* Experience section */}
+        <Experience />
+        
+        {/* Technical Skills section */}
+        <TechnicalSkills />
+        
+        {/* Contact Me section */}
+        <ContactMe />
+      </main>
       
       {/* Download CV button */}
       <DownloadCV />

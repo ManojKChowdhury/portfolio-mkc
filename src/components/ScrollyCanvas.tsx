@@ -151,6 +151,8 @@ export default function ScrollyCanvas() {
         <canvas
           ref={canvasRef}
           className="h-full w-full"
+          aria-label="Animated background showing experience sequence"
+          role="img"
           style={{ display: imagesLoaded ? 'block' : 'none' }}
         />
         {!imagesLoaded && (

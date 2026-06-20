@@ -32,6 +32,7 @@ export default function ContactMe() {
               href={link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              aria-label={`Visit my ${link.label}`}
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}

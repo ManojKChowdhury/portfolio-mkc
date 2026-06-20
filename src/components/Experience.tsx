@@ -75,6 +75,8 @@ export default function Experience() {
                           onClick={() => toggleCard(index)}
                           className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 bg-white/5 transition-all duration-300 hover:border-white/30 hover:bg-white/10 md:ml-0"
                           aria-label={isExpanded ? 'Collapse' : 'Expand'}
+                          aria-expanded={isExpanded}
+                          aria-controls={`achievements-${index}`}
                         >
                           <motion.svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -100,6 +102,7 @@ export default function Experience() {
                   <AnimatePresence>
                     {hasAchievements && isExpanded && (
                       <motion.ul
+                        id={`achievements-${index}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
